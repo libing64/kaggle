@@ -2,7 +2,7 @@
 """Titanic – Machine Learning from Disaster
 
 Covers: missing values, categorical encoding, feature engineering,
-cross-validation, Logistic Regression vs Random Forest (Accuracy).
+cross-validation, Logistic Regression / Random Forest vs a naive MLP.
 
 Run (needs pandas / numpy / scikit-learn):
     python 01_Titanic/solve.py
@@ -23,6 +23,14 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import StratifiedKFold, cross_val_predict, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+if __package__ in {None, ""}:
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from mlp import NaiveMLP
+else:
+    from .mlp import NaiveMLP
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "rn2019b-titanic"
@@ -171,7 +179,23 @@ def make_models() -> dict[str, Pipeline]:
             ),
         ]
     )
-    return {"logistic_regression": lr, "random_forest": rf}
+    mlp = Pipeline(
+        steps=[
+            ("prep", make_preprocessor(scale=True)),
+            (
+                "clf",
+                NaiveMLP(
+                    hidden_layer_sizes=(32, 16),
+                    learning_rate=0.05,
+                    epochs=200,
+                    batch_size=32,
+                    l2=1e-4,
+                    random_state=42,
+                ),
+            ),
+        ]
+    )
+    return {"logistic_regression": lr, "random_forest": rf, "naive_mlp": mlp}
 
 
 def summarize(train: pd.DataFrame, y: pd.Series) -> None:
@@ -221,9 +245,11 @@ def main() -> None:
     print("5-fold stratified CV (Accuracy)")
     print("=" * 60)
     for name, model in models.items():
-        scores = cross_val_score(model, X, y, cv=cv, scoring="accuracy", n_jobs=-1)
+        # NaiveMLP is a Python SGD loop; keep CV in-process to avoid pickle overhead.
+        n_jobs = 1 if name == "naive_mlp" else -1
+        scores = cross_val_score(model, X, y, cv=cv, scoring="accuracy", n_jobs=n_jobs)
         cv_means[name] = float(scores.mean())
-        oof_proba[name] = cross_val_predict(model, X, y, cv=cv, method="predict_proba", n_jobs=-1)[:, 1]
+        oof_proba[name] = cross_val_predict(model, X, y, cv=cv, method="predict_proba", n_jobs=n_jobs)[:, 1]
         print(f"{name:22s}  mean={scores.mean():.4f}  std={scores.std():.4f}  folds={np.round(scores, 4)}")
 
     blend_oof = 0.45 * oof_proba["logistic_regression"] + 0.55 * oof_proba["random_forest"]
@@ -231,8 +257,10 @@ def main() -> None:
     cv_means["blend_lr_rf"] = blend_acc
     print(f"{'blend_lr_rf':22s}  oof_acc={blend_acc:.4f}  (0.45*LR + 0.55*RF @ 0.5)")
 
-    best_name = max(cv_means, key=cv_means.get)
-    print(f"\nselected: {best_name}  score={cv_means[best_name]:.4f}")
+    classic = {k: v for k, v in cv_means.items() if k != "naive_mlp"}
+    best_name = max(classic, key=classic.get)
+    print(f"\nselected (tabular): {best_name}  score={cv_means[best_name]:.4f}")
+    print(f"naive_mlp (compare): {cv_means['naive_mlp']:.4f}")
 
     for name, model in models.items():
         model.fit(X, y)
@@ -240,6 +268,7 @@ def main() -> None:
     lr_proba = models["logistic_regression"].predict_proba(X_test)[:, 1]
     rf_proba = models["random_forest"].predict_proba(X_test)[:, 1]
     blend_proba = 0.45 * lr_proba + 0.55 * rf_proba
+    mlp_pred = models["naive_mlp"].predict(X_test)
 
     if best_name == "blend_lr_rf":
         pred = (blend_proba >= 0.5).astype(int)
@@ -253,6 +282,11 @@ def main() -> None:
     submission.to_csv(out_path, index=False)
     submission.to_csv(OUT_DIR / "submission.csv", index=False)
 
+    mlp_submission = pd.DataFrame({"PassengerId": x_test["PassengerId"], "Survived": mlp_pred.astype(int)})
+    mlp_path = ROOT / "submission_mlp.csv"
+    mlp_submission.to_csv(mlp_path, index=False)
+    mlp_submission.to_csv(OUT_DIR / "submission_mlp.csv", index=False)
+
     report = pd.DataFrame(
         [{"model": k, "cv_accuracy": v} for k, v in cv_means.items()]
     ).sort_values("cv_accuracy", ascending=False)
@@ -260,7 +294,9 @@ def main() -> None:
 
     print("\n" + "=" * 60)
     print(f"wrote {out_path}")
+    print(f"wrote {mlp_path}")
     print(f"predicted survival rate: {submission['Survived'].mean():.3f}")
+    print(f"mlp predicted survival rate: {mlp_submission['Survived'].mean():.3f}")
     print(report.to_string(index=False))
 
 
