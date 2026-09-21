@@ -1,0 +1,58 @@
+# Core data
+pandas
+numpy
+pyarrow
+openpyxl
+scipy
+
+# Classic ML / tabular
+scikit-learn
+xgboost
+lightgbm
+catboost
+imbalanced-learn
+category-encoders
+
+# Time series
+statsmodels
+prophet
+
+# NLP
+transformers
+datasets
+accelerate
+tokenizers
+sentencepiece
+nltk
+evaluate
+
+# CV extras (torch/torchvision installed separately with CUDA)
+opencv-python-headless
+pillow
+albumentations
+scikit-image
+timm
+
+# Viz / notebooks
+matplotlib
+seaborn
+plotly
+jupyterlab
+ipykernel
+ipywidgets
+notebook
+
+# Tuning / interpretability
+optuna
+shap
+
+# Kaggle I/O
+kaggle
+kagglehub
+
+# Utils
+tqdm
+joblib
+python-dotenv
+rich
+einops

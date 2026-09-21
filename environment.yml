@@ -1,0 +1,11 @@
+name: kaggle
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+# PyTorch CUDA wheels (RTX 50-series / sm_120) must be installed first:
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
+# Then the rest (Tsinghua index is faster in CN than the default Aliyun pip.conf):
+#   pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple

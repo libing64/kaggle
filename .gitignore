@@ -1,0 +1,18 @@
+# Data & artifacts
+data/
+models/
+submissions/
+outputs/
+.cache/
+wandb/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
+
+# Secrets (use ~/.kaggle/kaggle.json instead)
+kaggle.json
+.env
