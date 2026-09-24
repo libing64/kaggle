@@ -26,7 +26,21 @@
 
 备选替换：不想要图像可换 Iris（纯分类概念）、Bike Sharing Demand（回归+时序）、Telco Churn（客户流失，练业务分类和不平衡）。
 
-二、本地环境 `kaggle`
+二、naive → 优化（本地验证）
+
+前 6 题里，2–6 先有一版 naive `solve.py`，再在同一脚本上改特征或模型。分数都是本地交叉验证或时间留出，不是 Kaggle 公榜。提交文件在各题目录的 `submission.csv`。
+
+| 项目 | naive | 优化后 | 指标 |
+|---|---|---|---|
+| House Prices `02_House_Prices/` | 中位数填充 + One-Hot + Ridge | 质量列有序编码、面积/房龄、去掉两套异常大户、偏态列 `log1p` | 5-fold log-RMSE **0.1468 → 0.1129** |
+| Digit Recognizer `03_Digit_Recognizer/` | 像素 `/255` + MLP(128) | 两层卷积 + BatchNorm + 平移增强 | 3-fold Accuracy **0.9656 → 0.9879** |
+| Spaceship Titanic `04_Spaceship_Titanic/` | Cabin/Group 拆分 + 随机森林 | 按同行组补全、花费取对数、LightGBM | 5-fold Accuracy **0.7986 → 0.8133** |
+| Disaster Tweets `05_NLP_Disaster_Tweets/` | TF-IDF(1–2gram) + 逻辑回归 | 清洗链接/提及，词 TF-IDF + 字符 n-gram | 5-fold F1 **0.7477 → 0.7689** |
+| Store Sales `06_Store_Sales/` | 近 8 周 `(store, family, weekday)` 均值 | 促销、节假日、日历，以及 16 天以上滞后的 LightGBM | holdout RMSLE **0.4078**（2017-07-31～08-15；naive 无同口径分数） |
+
+Titanic（`01_Titanic/`）没有走同一轮替换。主提交是逻辑回归 + 随机森林概率融合，5-fold Accuracy **0.8372**（逻辑回归 0.8239，随机森林 0.8289）。同特征上的 naive MLP 是 **0.7988**，单独写在 `submission_mlp.csv`。
+
+三、本地环境 `kaggle`
 
 已创建 conda 环境，覆盖下载/上传、表格模型、图像 CNN、NLP Transformer、时序、不平衡分类。本机 RTX 5060 Ti 使用 PyTorch 2.14 + CUDA 13.0（含 sm_120）。
 

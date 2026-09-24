@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Disaster Tweets – naive TF-IDF + Logistic Regression."""
+"""Disaster Tweets – cleaned text, word + char TF-IDF, logistic regression."""
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import numpy as np
@@ -10,33 +11,59 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold, cross_val_score
-from sklearn.pipeline import Pipeline
+from sklearn.pipeline import FeatureUnion, Pipeline
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT.parent / "data" / "nlp-getting-started"
+
+
+def clean(text: str) -> str:
+    text = str(text).lower()
+    text = text.replace("%20", " ")
+    text = re.sub(r"https?://\S+|www\.\S+", " ", text)
+    text = re.sub(r"@\w+", " ", text)
+    text = text.replace("&amp;", " ")
+    text = re.sub(r"[^a-z0-9#\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def build_text(df: pd.DataFrame) -> pd.Series:
+    keyword = df["keyword"].fillna("").map(clean).str.replace(" ", "", regex=False)
+    body = df["text"].fillna("").map(clean)
+    return ("kw" + keyword + " " + body).str.strip()
 
 
 def main() -> None:
     train = pd.read_csv(DATA / "train.csv")
     test = pd.read_csv(DATA / "test.csv")
     y = train["target"].astype(int)
-    # keyword is a cheap extra token; location is too noisy for a naive pass.
-    text = (train["keyword"].fillna("") + " " + train["text"].fillna("")).str.strip()
-    text_test = (test["keyword"].fillna("") + " " + test["text"].fillna("")).str.strip()
+    text = build_text(train)
+    text_test = build_text(test)
 
     model = Pipeline(
         [
             (
                 "tfidf",
-                TfidfVectorizer(
-                    lowercase=True,
-                    stop_words="english",
-                    ngram_range=(1, 2),
-                    min_df=2,
-                    max_features=20000,
+                FeatureUnion(
+                    [
+                        (
+                            "word",
+                            TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_features=30000, sublinear_tf=True),
+                        ),
+                        (
+                            "char",
+                            TfidfVectorizer(
+                                analyzer="char_wb",
+                                ngram_range=(3, 5),
+                                min_df=2,
+                                max_features=20000,
+                                sublinear_tf=True,
+                            ),
+                        ),
+                    ]
                 ),
             ),
-            ("lr", LogisticRegression(C=1.0, max_iter=200, solver="liblinear")),
+            ("lr", LogisticRegression(C=2.0, max_iter=300, solver="liblinear")),
         ]
     )
 
