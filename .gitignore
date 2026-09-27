@@ -16,3 +16,4 @@ __pycache__/
 # Secrets (use ~/.kaggle/kaggle.json instead)
 kaggle.json
 .env
+**.pt

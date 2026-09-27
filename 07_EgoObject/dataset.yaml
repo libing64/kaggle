@@ -1,0 +1,15 @@
+path: /home/libing/source/ml/kaggle/data/ego-object/resource/data
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: pillow
+  1: box
+  2: book
+  3: bottle
+  4: chair
+  5: mug
+  6: door
+  7: shelf
+  8: plate
+  9: sofa
