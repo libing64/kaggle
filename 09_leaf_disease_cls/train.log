@@ -1,0 +1,20 @@
+device=cuda
+classes {'0': 'Cassava Bacterial Blight (CBB)', '1': 'Cassava Brown Streak Disease (CBSD)', '2': 'Cassava Green Mottle (CGM)', '3': 'Cassava Mosaic Disease (CMD)', '4': 'Healthy'}
+label
+0     1087
+1     2189
+2     2386
+3    13158
+4     2577
+epoch 01/8  train_loss=0.8195 acc=0.6510  val_loss=0.9587 acc=0.7533
+epoch 02/8  train_loss=0.6274 acc=0.7630  val_loss=1.0996 acc=0.6439
+epoch 03/8  train_loss=0.5535 acc=0.7998  val_loss=0.9731 acc=0.7600
+epoch 04/8  train_loss=0.4742 acc=0.8349  val_loss=1.0319 acc=0.7418
+epoch 05/8  train_loss=0.4135 acc=0.8722  val_loss=1.0485 acc=0.7666
+epoch 06/8  train_loss=0.3736 acc=0.8897  val_loss=1.0397 acc=0.7745
+epoch 07/8  train_loss=0.3580 acc=0.8972  val_loss=1.0766 acc=0.7486
+epoch 08/8  train_loss=0.3454 acc=0.9054  val_loss=1.0279 acc=0.7883
+best_val_acc=0.7883  train_seconds=574.0
+wrote /home/libing/source/ml/kaggle/09_leaf_disease_cls/submission.csv rows=1
+label
+4    1
