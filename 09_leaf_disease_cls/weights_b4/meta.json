@@ -1,0 +1,19 @@
+{
+  "model_name": "tf_efficientnet_b4.ns_jft_in1k",
+  "img_size": 512,
+  "fold_scores": [
+    0.7574766355140187,
+    0.7820093457943925,
+    0.7595232530965179,
+    0.709277868660902,
+    0.7807899041832204
+  ],
+  "oof_tta": 0.7674907697340748,
+  "ckpts": [
+    "fold0.pt",
+    "fold1.pt",
+    "fold2.pt",
+    "fold3.pt",
+    "fold4.pt"
+  ]
+}

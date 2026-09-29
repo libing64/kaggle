@@ -1,0 +1,121 @@
+device=cuda  model=tf_efficientnet_b4.ns_jft_in1k  img=512  epochs=20  batch=4x3  folds=5
+classes {'0': 'Cassava Bacterial Blight (CBB)', '1': 'Cassava Brown Streak Disease (CBSD)', '2': 'Cassava Green Mottle (CGM)', '3': 'Cassava Mosaic Disease (CMD)', '4': 'Healthy'}
+label
+0     1087
+1     2189
+2     2386
+3    13158
+4     2577
+
+===== fold 0/4  train=17117 val=4280 =====
+fold0 epoch 01/20 mixup=1  train_loss=1.2678 acc=0.3614  val_loss=1.2237 acc=0.6091
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold0.pt  best_val_acc=0.6091
+fold0 epoch 02/20 mixup=1  train_loss=1.0217 acc=0.4363  val_loss=1.1418 acc=0.6493
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold0.pt  best_val_acc=0.6493
+fold0 epoch 03/20 mixup=1  train_loss=0.9365 acc=0.4727  val_loss=1.1057 acc=0.6752
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold0.pt  best_val_acc=0.6752
+fold0 epoch 04/20 mixup=1  train_loss=0.8745 acc=0.4981  val_loss=1.0470 acc=0.7575
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold0.pt  best_val_acc=0.7575
+fold0 epoch 05/20 mixup=1  train_loss=0.8190 acc=0.5217  val_loss=0.9932 acc=0.7386
+fold0 epoch 06/20 mixup=1  train_loss=0.7793 acc=0.5301  val_loss=1.0831 acc=0.6785
+fold0 epoch 07/20 mixup=1  train_loss=0.7555 acc=0.5398  val_loss=1.0693 acc=0.7381
+fold0 epoch 08/20 mixup=1  train_loss=0.7222 acc=0.5503  val_loss=1.0855 acc=0.7042
+fold0 epoch 09/20 mixup=1  train_loss=0.6903 acc=0.5678  val_loss=1.1153 acc=0.6972
+fold0 epoch 10/20 mixup=1  train_loss=0.6607 acc=0.5793  val_loss=1.1161 acc=0.7016
+  early stop at epoch 10 (patience=6)
+fold0 best_val_acc=0.7575  seconds=2853.6
+fold0 val_acc_with_TTA=0.7678
+
+===== fold 1/4  train=17117 val=4280 =====
+fold1 epoch 01/20 mixup=1  train_loss=1.2544 acc=0.3678  val_loss=1.3038 acc=0.5514
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.5514
+fold1 epoch 02/20 mixup=1  train_loss=1.0176 acc=0.4382  val_loss=1.0968 acc=0.6794
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.6794
+fold1 epoch 03/20 mixup=1  train_loss=0.9257 acc=0.4846  val_loss=1.1572 acc=0.6110
+fold1 epoch 04/20 mixup=1  train_loss=0.8672 acc=0.4957  val_loss=1.0498 acc=0.6974
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.6974
+fold1 epoch 05/20 mixup=1  train_loss=0.8228 acc=0.5276  val_loss=1.0231 acc=0.7213
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7213
+fold1 epoch 06/20 mixup=1  train_loss=0.7701 acc=0.5335  val_loss=1.0556 acc=0.7030
+fold1 epoch 07/20 mixup=1  train_loss=0.7464 acc=0.5471  val_loss=0.9957 acc=0.7306
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7306
+fold1 epoch 08/20 mixup=1  train_loss=0.7119 acc=0.5579  val_loss=1.0276 acc=0.7332
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7332
+fold1 epoch 09/20 mixup=1  train_loss=0.6957 acc=0.5610  val_loss=1.0841 acc=0.6778
+fold1 epoch 10/20 mixup=1  train_loss=0.6580 acc=0.5747  val_loss=1.0964 acc=0.7250
+fold1 epoch 11/20 mixup=0  train_loss=0.5040 acc=0.8481  val_loss=1.1195 acc=0.7395
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7395
+fold1 epoch 12/20 mixup=0  train_loss=0.4791 acc=0.8620  val_loss=1.0897 acc=0.7652
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7652
+fold1 epoch 13/20 mixup=0  train_loss=0.4536 acc=0.8716  val_loss=1.1177 acc=0.7203
+fold1 epoch 14/20 mixup=0  train_loss=0.4297 acc=0.8813  val_loss=1.0888 acc=0.7600
+fold1 epoch 15/20 mixup=0  train_loss=0.4047 acc=0.8950  val_loss=1.0614 acc=0.7820
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold1.pt  best_val_acc=0.7820
+fold1 epoch 16/20 mixup=0  train_loss=0.4025 acc=0.8969  val_loss=1.0725 acc=0.7572
+fold1 epoch 17/20 mixup=0  train_loss=0.3991 acc=0.8982  val_loss=1.1105 acc=0.7264
+fold1 epoch 18/20 mixup=0  train_loss=0.3917 acc=0.9006  val_loss=1.0747 acc=0.7638
+fold1 epoch 19/20 mixup=0  train_loss=0.3854 acc=0.9006  val_loss=1.0678 acc=0.7650
+fold1 epoch 20/20 mixup=0  train_loss=0.3841 acc=0.9015  val_loss=1.0943 acc=0.7430
+fold1 best_val_acc=0.7820  seconds=5655.7
+fold1 val_acc_with_TTA=0.7932
+
+===== fold 2/4  train=17118 val=4279 =====
+fold2 epoch 01/20 mixup=1  train_loss=1.2770 acc=0.3646  val_loss=1.2379 acc=0.5359
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold2.pt  best_val_acc=0.5359
+fold2 epoch 02/20 mixup=1  train_loss=1.0333 acc=0.4396  val_loss=1.0632 acc=0.7039
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold2.pt  best_val_acc=0.7039
+fold2 epoch 03/20 mixup=1  train_loss=0.9339 acc=0.4710  val_loss=1.1074 acc=0.6450
+fold2 epoch 04/20 mixup=1  train_loss=0.8809 acc=0.4993  val_loss=1.0640 acc=0.7025
+fold2 epoch 05/20 mixup=1  train_loss=0.8282 acc=0.5272  val_loss=1.1296 acc=0.6520
+fold2 epoch 06/20 mixup=1  train_loss=0.7874 acc=0.5258  val_loss=1.0822 acc=0.6604
+fold2 epoch 07/20 mixup=1  train_loss=0.7510 acc=0.5547  val_loss=1.0150 acc=0.7595
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold2.pt  best_val_acc=0.7595
+fold2 epoch 08/20 mixup=1  train_loss=0.7136 acc=0.5582  val_loss=1.0741 acc=0.6516
+fold2 epoch 09/20 mixup=1  train_loss=0.6966 acc=0.5634  val_loss=1.0073 acc=0.7369
+fold2 epoch 10/20 mixup=1  train_loss=0.6607 acc=0.5823  val_loss=1.0368 acc=0.7240
+fold2 epoch 11/20 mixup=0  train_loss=0.4951 acc=0.8511  val_loss=1.0859 acc=0.7287
+fold2 epoch 12/20 mixup=0  train_loss=0.4687 acc=0.8626  val_loss=1.1216 acc=0.6978
+fold2 epoch 13/20 mixup=0  train_loss=0.4495 acc=0.8749  val_loss=1.0733 acc=0.7371
+  early stop at epoch 13 (patience=6)
+fold2 best_val_acc=0.7595  seconds=3677.6
+fold2 val_acc_with_TTA=0.7684
+
+===== fold 3/4  train=17118 val=4279 =====
+fold3 epoch 01/20 mixup=1  train_loss=1.2511 acc=0.3640  val_loss=1.3315 acc=0.5492
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold3.pt  best_val_acc=0.5492
+fold3 epoch 02/20 mixup=1  train_loss=0.9959 acc=0.4471  val_loss=1.2164 acc=0.6139
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold3.pt  best_val_acc=0.6139
+fold3 epoch 03/20 mixup=1  train_loss=0.9239 acc=0.4779  val_loss=1.0796 acc=0.7093
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold3.pt  best_val_acc=0.7093
+fold3 epoch 04/20 mixup=1  train_loss=0.8619 acc=0.5105  val_loss=1.1777 acc=0.6333
+fold3 epoch 05/20 mixup=1  train_loss=0.8079 acc=0.5296  val_loss=1.1895 acc=0.6046
+fold3 epoch 06/20 mixup=1  train_loss=0.7821 acc=0.5325  val_loss=1.0992 acc=0.6981
+fold3 epoch 07/20 mixup=1  train_loss=0.7337 acc=0.5578  val_loss=1.0985 acc=0.7083
+fold3 epoch 08/20 mixup=1  train_loss=0.7064 acc=0.5549  val_loss=1.1254 acc=0.6756
+fold3 epoch 09/20 mixup=1  train_loss=0.6742 acc=0.5757  val_loss=1.0942 acc=0.7093
+  early stop at epoch 9 (patience=6)
+fold3 best_val_acc=0.7093  seconds=2548.8
+fold3 val_acc_with_TTA=0.7179
+
+===== fold 4/4  train=17118 val=4279 =====
+fold4 epoch 01/20 mixup=1  train_loss=1.2364 acc=0.3576  val_loss=1.1752 acc=0.6513
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold4.pt  best_val_acc=0.6513
+fold4 epoch 02/20 mixup=1  train_loss=1.0216 acc=0.4384  val_loss=1.1349 acc=0.6747
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold4.pt  best_val_acc=0.6747
+fold4 epoch 03/20 mixup=1  train_loss=0.9420 acc=0.4678  val_loss=1.1349 acc=0.6322
+fold4 epoch 04/20 mixup=1  train_loss=0.8736 acc=0.5000  val_loss=1.0234 acc=0.7808
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/weights_b4/fold4.pt  best_val_acc=0.7808
+fold4 epoch 05/20 mixup=1  train_loss=0.8299 acc=0.5155  val_loss=1.0387 acc=0.7782
+fold4 epoch 06/20 mixup=1  train_loss=0.7828 acc=0.5328  val_loss=1.0427 acc=0.7212
+fold4 epoch 07/20 mixup=1  train_loss=0.7427 acc=0.5373  val_loss=1.0166 acc=0.7691
+fold4 epoch 08/20 mixup=1  train_loss=0.7181 acc=0.5612  val_loss=1.0656 acc=0.7109
+fold4 epoch 09/20 mixup=1  train_loss=0.6889 acc=0.5712  val_loss=1.1097 acc=0.7011
+fold4 epoch 10/20 mixup=1  train_loss=0.6531 acc=0.5819  val_loss=1.0887 acc=0.6840
+  early stop at epoch 10 (patience=6)
+fold4 best_val_acc=0.7808  seconds=2832.3
+fold4 val_acc_with_TTA=0.7901
+
+CV fold_best=0.7578±0.0264  OOF_TTA=0.7675  total_seconds=18257.8
+wrote /home/libing/source/ml/kaggle/09_leaf_disease_cls/submission.csv rows=1
+label
+4    1
