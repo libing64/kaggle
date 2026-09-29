@@ -1,0 +1,34 @@
+device=cuda  img=384  epochs=20  batch=12
+classes {'0': 'Cassava Bacterial Blight (CBB)', '1': 'Cassava Brown Streak Disease (CBSD)', '2': 'Cassava Green Mottle (CGM)', '3': 'Cassava Mosaic Disease (CMD)', '4': 'Healthy'}
+label
+0     1087
+1     2189
+2     2386
+3    13158
+4     2577
+resumed from /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0.pt
+epoch 01/20  train_loss=0.8213 acc=0.4853  val_loss=1.1554 acc=0.7472
+epoch 02/20  train_loss=0.8043 acc=0.4954  val_loss=1.1595 acc=0.7470
+epoch 03/20  train_loss=0.7927 acc=0.5117  val_loss=1.1485 acc=0.7500
+epoch 04/20  train_loss=0.7684 acc=0.5176  val_loss=1.1573 acc=0.7491
+epoch 05/20  train_loss=0.7685 acc=0.5159  val_loss=1.1779 acc=0.7428
+epoch 06/20  train_loss=0.7514 acc=0.5117  val_loss=1.1482 acc=0.7381
+epoch 07/20  train_loss=0.7432 acc=0.5335  val_loss=1.2075 acc=0.6991
+epoch 08/20  train_loss=0.7245 acc=0.5230  val_loss=1.1792 acc=0.7189
+epoch 09/20  train_loss=0.7184 acc=0.5316  val_loss=1.1843 acc=0.7355
+epoch 10/20  train_loss=0.6965 acc=0.5434  val_loss=1.1673 acc=0.7671
+epoch 11/20  train_loss=0.7136 acc=0.5430  val_loss=1.1751 acc=0.7568
+epoch 12/20  train_loss=0.6954 acc=0.5642  val_loss=1.1631 acc=0.7432
+epoch 13/20  train_loss=0.6941 acc=0.5463  val_loss=1.1611 acc=0.7729
+epoch 14/20  train_loss=0.6831 acc=0.5497  val_loss=1.1862 acc=0.7407
+epoch 15/20  train_loss=0.6842 acc=0.5481  val_loss=1.1769 acc=0.7516
+epoch 16/20  train_loss=0.6577 acc=0.5419  val_loss=1.1876 acc=0.7451
+epoch 17/20  train_loss=0.6715 acc=0.5573  val_loss=1.1946 acc=0.7402
+epoch 18/20  train_loss=0.6778 acc=0.5676  val_loss=1.1621 acc=0.7607
+epoch 19/20  train_loss=0.6697 acc=0.5474  val_loss=1.1937 acc=0.7299
+epoch 20/20  train_loss=0.6660 acc=0.5407  val_loss=1.1895 acc=0.7285
+best_val_acc=0.7729  train_seconds=1421.7
+val_acc_with_TTA=0.7778
+wrote /home/libing/source/ml/kaggle/09_leaf_disease_cls/submission.csv rows=1
+label
+2    1

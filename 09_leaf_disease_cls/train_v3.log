@@ -1,0 +1,41 @@
+device=cuda  img=384  epochs=16  batch=16
+classes {'0': 'Cassava Bacterial Blight (CBB)', '1': 'Cassava Brown Streak Disease (CBSD)', '2': 'Cassava Green Mottle (CGM)', '3': 'Cassava Mosaic Disease (CMD)', '4': 'Healthy'}
+label
+0     1087
+1     2189
+2     2386
+3    13158
+4     2577
+epoch 01/16  mixup=1  train_loss=0.9379 acc=0.4231  val_loss=0.9941 acc=0.6428
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.6428
+epoch 02/16  mixup=1  train_loss=0.8124 acc=0.4643  val_loss=0.9848 acc=0.6638
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.6638
+epoch 03/16  mixup=1  train_loss=0.7637 acc=0.4717  val_loss=0.9601 acc=0.6657
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.6657
+epoch 04/16  mixup=1  train_loss=0.7011 acc=0.5022  val_loss=0.9234 acc=0.7467
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7467
+epoch 05/16  mixup=1  train_loss=0.6533 acc=0.5172  val_loss=0.9538 acc=0.7460
+epoch 06/16  mixup=1  train_loss=0.6397 acc=0.5261  val_loss=0.9358 acc=0.7500
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7500
+epoch 07/16  mixup=1  train_loss=0.6199 acc=0.5243  val_loss=0.9297 acc=0.7790
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7790
+epoch 08/16  mixup=1  train_loss=0.5792 acc=0.5353  val_loss=0.9379 acc=0.7850
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7850
+epoch 09/16  mixup=0  train_loss=0.3740 acc=0.8898  val_loss=0.9813 acc=0.7743
+epoch 10/16  mixup=0  train_loss=0.3452 acc=0.9068  val_loss=0.9854 acc=0.7790
+epoch 11/16  mixup=0  train_loss=0.3250 acc=0.9166  val_loss=0.9903 acc=0.7836
+epoch 12/16  mixup=0  train_loss=0.3120 acc=0.9243  val_loss=0.9825 acc=0.7886
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7886
+epoch 13/16  mixup=0  train_loss=0.2992 acc=0.9286  val_loss=0.9683 acc=0.7909
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7909
+epoch 14/16  mixup=0  train_loss=0.2958 acc=0.9342  val_loss=0.9955 acc=0.7897
+epoch 15/16  mixup=0  train_loss=0.2891 acc=0.9388  val_loss=0.9715 acc=0.7995
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.7995
+epoch 16/16  mixup=0  train_loss=0.2902 acc=0.9397  val_loss=0.9715 acc=0.8068
+  saved /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0_v3.pt  best_val_acc=0.8068
+best_val_acc=0.8068  train_seconds=1066.7
+val_acc_with_TTA=0.8131
+updated deploy weights -> /home/libing/source/ml/kaggle/09_leaf_disease_cls/efficientnet_b0.pt
+wrote /home/libing/source/ml/kaggle/09_leaf_disease_cls/submission.csv rows=1
+label
+4    1
