@@ -1,0 +1,8 @@
+{
+  "teacher": "tf_efficientnet_b3.ns_jft_in1k",
+  "student": "tf_efficientnet_b0.ns_jft_in1k",
+  "threshold": 0.05,
+  "distill_alpha": 0.5,
+  "distill_T": 3.0,
+  "rows": 7443
+}

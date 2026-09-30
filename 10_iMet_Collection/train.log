@@ -1,0 +1,43 @@
+device=cuda  img=224  batch=48
+train rows=109237  classes=1103
+label map rows=1103
+split train=98313 val=10924
+
+=== teacher tf_efficientnet_b3.ns_jft_in1k ===
+teacher epoch 1/6  loss=0.0157  val_f2=0.4692 thr=0.075  sec=259.7
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.4692
+teacher epoch 2/6  loss=0.0091  val_f2=0.5142 thr=0.075  sec=256.8
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.5142
+teacher epoch 3/6  loss=0.0080  val_f2=0.5309 thr=0.100  sec=256.6
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.5309
+teacher epoch 4/6  loss=0.0072  val_f2=0.5437 thr=0.100  sec=256.6
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.5437
+teacher epoch 5/6  loss=0.0065  val_f2=0.5502 thr=0.100  sec=256.6
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.5502
+teacher epoch 6/6  loss=0.0061  val_f2=0.5532 thr=0.100  sec=256.5
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/teacher_b3.pt f2=0.5532
+
+=== student tf_efficientnet_b0.ns_jft_in1k (distill α=0.5, T=3.0) ===
+student epoch 1/8  loss=0.6141  val_f2=0.2778 thr=0.050  sec=266.6
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.2778
+student epoch 2/8  loss=0.5548  val_f2=0.3682 thr=0.050  sec=266.8
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.3682
+student epoch 3/8  loss=0.5457  val_f2=0.4312 thr=0.050  sec=265.3
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.4312
+student epoch 4/8  loss=0.5415  val_f2=0.4543 thr=0.050  sec=264.5
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.4543
+student epoch 5/8  loss=0.5385  val_f2=0.4736 thr=0.050  sec=264.5
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.4736
+student epoch 6/8  loss=0.5363  val_f2=0.4838 thr=0.050  sec=264.5
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.4838
+student epoch 7/8  loss=0.5347  val_f2=0.4913 thr=0.050  sec=265.0
+  saved /home/libing/source/ml/kaggle/10_iMet_Collection/student_b0.pt f2=0.4913
+student epoch 8/8  loss=0.5336  val_f2=0.4904 thr=0.050  sec=264.5
+deploy threshold=0.050
+wrote /home/libing/source/ml/kaggle/10_iMet_Collection/submission.csv rows=7443
+              id                                                       attribute_ids
+10023b2cc4ed5f68                                                        369 587 1059
+100fbe75ed8fd887                                                            231 1039
+101b627524a04f19                                                             718 784
+10234480c41284c6 13 51 111 147 480 483 553 725 738 776 813 830 923 963 964 1006 1046
+1023b0e2636dcea8                               147 283 322 477 538 671 813 1046 1092
