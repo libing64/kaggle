@@ -1,0 +1,60 @@
+device=cuda  steps=20  train=scenes/sample.zarr  len=111634
+train:   0%|          | 0/20 [00:00<?, ?it/s]/tmp/l5kit/l5kit/l5kit/dataset/utils.py:32: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  torch.ByteTensor(torch.ByteStorage.from_buffer(string.encode("ascii"))),  # type: ignore
+/tmp/l5kit/l5kit/l5kit/dataset/utils.py:32: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  torch.ByteTensor(torch.ByteStorage.from_buffer(string.encode("ascii"))),  # type: ignore
+train:   5%|▌         | 1/20 [00:00<00:13,  1.37it/s]train:  30%|███       | 6/20 [00:00<00:01,  8.24it/s]train:  45%|████▌     | 9/20 [00:01<00:00, 11.70it/s]train:  60%|██████    | 12/20 [00:01<00:00, 12.85it/s]train:  70%|███████   | 14/20 [00:01<00:00, 13.88it/s]train:  80%|████████  | 16/20 [00:01<00:00, 14.89it/s]train:  90%|█████████ | 18/20 [00:01<00:00, 15.77it/s]  saved /home/libing/source/ml/kaggle/11_lyft_motion_prediction/resnet18_motion.pt step=20 avg_loss=115.7778
+train: 100%|██████████| 20/20 [00:01<00:00, 15.72it/s]train: 100%|██████████| 20/20 [00:01<00:00, 11.92it/s]
+train done seconds=1.7
+loaded agents mask /home/libing/source/ml/kaggle/11_lyft_motion_prediction/data/scenes/mask.npz sum=71122
+/home/libing/source/ml/kaggle/11_lyft_motion_prediction/solve.py:96: RuntimeWarning: you're running with a custom agents_mask
+  dataset = AgentDataset(cfg, zarr, rasterizer, agents_mask=agents_mask)
+predict:   0%|          | 0/2223 [00:00<?, ?it/s]predict:   0%|          | 0/2223 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/libing/source/ml/kaggle/11_lyft_motion_prediction/solve.py", line 213, in <module>
+    main()
+  File "/home/libing/source/ml/kaggle/11_lyft_motion_prediction/solve.py", line 209, in main
+    predict_test(cfg, dm, model)
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/libing/source/ml/kaggle/11_lyft_motion_prediction/solve.py", line 174, in predict_test
+    for batch in tqdm(loader, desc="predict"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/tqdm/std.py", line 1186, in __iter__
+    for obj in iterable:
+               ^^^^^^^^
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 725, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1531, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1569, in _process_data
+    data.reraise()
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/_utils.py", line 803, in reraise
+    raise exception
+IndexError: Caught IndexError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 375, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/libing/.conda/envs/kaggle/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/tmp/l5kit/l5kit/l5kit/dataset/agent.py", line 118, in __getitem__
+    return self.get_frame(scene_index, state_index, track_id=track_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/l5kit/l5kit/l5kit/dataset/ego.py", line 198, in get_frame
+    data = super().get_frame(scene_index, state_index, track_id=track_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/l5kit/l5kit/l5kit/dataset/ego.py", line 77, in get_frame
+    data = self.sample_function(state_index, frames, self.dataset.agents, tl_faces, track_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/l5kit/l5kit/l5kit/sampling/agent_sampling.py", line 236, in generate_agent_sample
+    agent = filter_agents_by_track_id(filtered_agents, selected_track_id)[0]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
+/tmp/l5kit/l5kit/l5kit/dataset/utils.py:32: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  torch.ByteTensor(torch.ByteStorage.from_buffer(string.encode("ascii"))),  # type: ignore
